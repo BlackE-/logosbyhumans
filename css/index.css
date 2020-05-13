@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans+Condensed:300,400,500,700&display=swap');
+body{font-family: 'Fira Sans Condensed', sans-serif;margin: 0;padding: 0;}
+.container{max-width: 1116px;margin:0 auto;width:90%;}
+#canvas{z-index: -1;width: 100%;height: 100vh;position: fixed;top:0;left:0;}
+
+#body{display: grid;grid-template-columns: 1fr 377px;text-align: center;grid-gap: 95px;max-width: 1090px;}
+@media only screen and (max-width: 920px){#body{grid-template-columns: 1fr auto;grid-gap:50px;}}
+@media only screen and (max-width: 720px){
+  #body{grid-template-columns: auto; grid-template-row:auto auto;grid-gap:20px;height: auto;}
+  #body .left{grid-row-start: 2;text-align: center !important;}
+}
+#body .left {text-align: left;display: grid;align-items: center;}
+#body .left h1{color: #41c69f;font-weight: 400;font-size: 62px;margin:25px 0;}
+#body .left h1 b{font-weight:800;color: #fff;}
+#body .left p{color: #fff;font-size: 22px;margin:0;}
+#body .left p span{font-weight:800;color: #41c69f;font-size:26px;}
+#body .left form{  display: grid;grid-template-columns: auto 132px;grid-gap:5px;}
+#body .left form input[type='email']{font-family: 'Fira Sans Condensed', sans-serif;outline:none;background: transparent;border:0;border-bottom:1px solid #41c69f;font-size:20px;color:#fff;}
+#body .left form input[type='email']:focus{border:0;border-bottom:1px solid #fff;}
+#body .left form input[type='email'].error{border-color: #ff4d4d;}
+#body .left form input[type='email'].success{border-color: #32ff7e;}
+#body .left form ::placeholder { font-family: 'Fira Sans Condensed', sans-serif; color: #41c69f;  opacity: 1;}
+#body .left form  :-ms-input-placeholder {font-family: 'Fira Sans Condensed', sans-serif;color: #41c69f;}
+#body .left form ::-ms-input-placeholder {font-family: 'Fira Sans Condensed', sans-serif;color: #41c69f;}
+#body .left form #enviarBody{position:relative;font-family: 'Fira Sans Condensed', sans-serif;background: #41c69f;width:100%;margin:0;color:#fff;font-weight: 500;font-size: 20px;border-radius: 50px;padding:10px 0;outline:none;border:0;box-shadow: 0px 5px 1px rgba(0, 27, 61, 0.4);}
+#body .left form #enviarBody:before{content: "";position: absolute;top: 0;left: 0;right: 0; bottom: 0;border-radius: 50px;background:rgba(255, 255, 255, 0.1);-webkit-transform: scaleX(0);transform: scaleX(0);-webkit-transform-origin: 50%;transform-origin: 50%;-webkit-transition-property: transform;transition-property: transform;-webkit-transition-duration: 0.3s;transition-duration: 0.3s;-webkit-transition-timing-function: ease-out;transition-timing-function: ease-out;}
+#body .left form #enviarBody:hover{cursor:pointer;}
+#body .left form #enviarBody:hover:before, #body .left #enviarBody:focus:before, #body .left form #enviarBody:active:before {-webkit-transform: scaleX(1);transform: scaleX(1); }
+#body .left button{font-family: 'Fira Sans Condensed', sans-serif;color:#01187c;outline:none;font-weight: 500;font-size: 20px;border-radius: 50px;border:1px solid #01187c;padding:10px 25px;background: 0;margin:50px 0;transition: all 300ms ease-out;}
+#body .left button:hover{cursor: pointer;border:1px solid #41c69f;color: #41c69f;}
+@media only screen and (max-width: 1030px){  #body .left form{  grid-template-columns: auto 100px;}}
+@media only screen and (max-width: 720px){
+  #body .left h1{font-size: 42px;}
+  #body .left p{font-size: 16px;}
+  #body .left form input[type='email']{font-size: 16px;}
+}
+@media only screen and (max-width: 470px){
+  #body .left form{  grid-template-columns: auto 50px;}
+  #body .left form #enviarBody{font-size: 12px;}
+}
+#body .right{display: grid;align-items: center;}
+#body .right svg{width: 100%;}
+
+.modal {position: fixed;z-index: 100;padding-top: 100px;top: -9999px;width: 100%;height: 100%;overflow: auto;background: rgba(0,0,0,0.5);overflow: hidden;}
+.modal.openModal{animation-duration: 1s;animation-name: smoothOpenModal;top:0;}
+.modal.closeModal{animation-duration: 2s;animation-name: smoothCloseModal;top:-999999px;}
+@keyframes smoothOpenModal {
+  0% { top: -9999px; }
+  50% {	top: -300px; }
+  100% {top: 0; }
+}@keyframes smoothCloseModal {
+  0% { top: 0; }
+  50% {	top: -300px; }
+  100% {top: -9999px; }
+}
+.modal-content {background-color: #fefefe;  margin: auto; border: 1px solid #fdfdfd;height:70vh;display:grid;grid-gap:50px;align-items:center;text-align:center;border-radius:20px;width: 70%;position: relative;overflow: hidden;padding:20px 20px 50px 20px;}
+.openModal .modal-content{animation-duration: 2s;animation-name: flipInX;}
+.closeModal .modal-content{animation-duration: 3s;animation-name: flipOutX;}
+@keyframes flipInX {
+ from {
+  transform:perspective(400px) rotate3d(1,0,0,90deg);
+  animation-timing-function:ease-in;
+  opacity:0
+ }
+ 60% {
+  transform:perspective(400px) rotate3d(1,0,0,0deg);
+  opacity:1
+ }
+ to {
+  transform:perspective(400px)
+ }
+}
+@keyframes flipOutX {
+ from {
+  transform:perspective(400px) rotate3d(1,0,0,0deg);
+ }
+ 60% {
+  transform:perspective(400px) rotate3d(1,0,0,-90deg);
+  opacity:1
+ }
+ to {
+  transform:perspective(400px);
+  opacity:0
+ }
+}
+.close {position: absolute;right:20px;top:20px;z-index: 200;}
+.close svg{fill: #41c69f;}
+.close:hover,.close:focus {cursor: pointer;}
+.modal-content .compare{display: grid;grid-template-rows: auto;grid-template-columns:1fr 1fr;align-items: center;background:#fff;justify-content: center;	}
+@media only screen and (max-width: 560px){
+  .modal-content {grid-gap: 10px;}
+  .modal-content .compare .title p{font-size: 18px !important;}
+  .modal-content .compare .description p{font-size: 14px !important;}
+  .modal-content form input[type='email']{font-size:16px;}
+}
+
+.modal-content .compare .box{display: grid;grid-template-rows: auto 250px auto;align-items: center;}
+.modal-content .compare .box:first-child{border-right:1px solid #41c69f;}
+.modal-content .compare .title p{font-size:25px;color:#585858;text-align: center;}
+.modal-content .compare .titleHumans p b{color:#6b54e7;}
+.modal-content .compare .description p{font-size: 14px;color:#032146;max-width: 70%;margin:0 auto;text-align: left;}
+.modal-content .compare .description p b{color:#6b54e7;}
+
+.modal-content form{  display: grid;grid-template-columns: auto 132px;grid-gap:5px;width:90%;max-width:640px;margin:0 auto;position: relative;}
+.modal-content form input[type='email']{font-family: 'Fira Sans Condensed', sans-serif;outline:none;background: transparent;border:0;border-bottom:1px solid #41c69f;font-size:20px;color:#6b54e7;}
+.modal-content form input[type='email']:focus{border:0;border-bottom:1px solid #6b54e7;}
+.modal-content form input[type='email'].error{border-color: #ff4d4d;}
+.modal-content form ::placeholder { font-family: 'Fira Sans Condensed', sans-serif; color: #41c69f;  opacity: 1;}
+.modal-content form  :-ms-input-placeholder {font-family: 'Fira Sans Condensed', sans-serif;color: #41c69f;}
+.modal-content form ::-ms-input-placeholder {font-family: 'Fira Sans Condensed', sans-serif;color: #41c69f;}
+
+.modal-content form #enviarModal{position:relative;font-family: 'Fira Sans Condensed', sans-serif;background: #41c69f;width:100%;margin:0;color:#fff;font-weight: 500;font-size: 20px;border-radius: 50px;padding:10px 0;outline:none;border:0;box-shadow: 0px 5px 1px rgba(0, 27, 61, 0.4);}
+.modal-content form #enviarModal:before{content: "";position: absolute;top: 0;left: 0;right: 0; bottom: 0;border-radius: 50px;background:rgba(255, 255, 255, 0.1);-webkit-transform: scaleX(0);transform: scaleX(0);-webkit-transform-origin: 50%;transform-origin: 50%;-webkit-transition-property: transform;transition-property: transform;-webkit-transition-duration: 0.3s;transition-duration: 0.3s;-webkit-transition-timing-function: ease-out;transition-timing-function: ease-out;}
+.modal-content form #enviarModal:hover{cursor:pointer;}
+.modal-content form #enviarModal:hover:before, .modal-content form #enviarModal:focus:before, .modal-content form #enviarModal:active:before {-webkit-transform: scaleX(1);transform: scaleX(1); }
+.modal-content form .message{position: absolute;bottom:-50px;left:0;}
+@media only screen and (max-width: 560px){.modal-content form input[type='email']{font-size:16px;}}
