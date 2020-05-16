@@ -1,12 +1,17 @@
 	const modal = document.getElementById("modal");
   const span = document.getElementsByClassName("close")[0];
+  const modalMensaje = document.getElementById("modalMensaje");
+  const spanClose = document.getElementsByClassName("closeModalMensaje")[0];
+
 
   document.getElementById("openModalHeader").onclick = function(e){openModal();};
   document.getElementById("openModalBody").onclick = function(e){openModal();};
 
     span.onclick = function() {   closeModal();}
+    spanClose.onclick = function() {   closeModalMensaje();}
     window.onclick = function(event) {
       if (event.target == modal) {closeModal();}
+      if (event.target == modalMensaje) {closeModal();}
     }   
     openModal = ()=>{
         modal.classList.remove('closeModal');
@@ -16,6 +21,17 @@
       modal.classList.remove('openModal');
       modal.classList.add('closeModal');
     }
+
+    openModalMensaje = () =>{
+      modalMensaje.classList.remove('closeModal');
+      modalMensaje.classList.add('openModal');
+    }
+
+    closeModalMensaje = () =>{
+      modalMensaje.classList.remove('openModal');
+      modalMensaje.classList.add('closeModal');
+    }
+
 
     const signinUrl = 'script/sendMail.php';
     const $formBody = document.getElementById('mailing');
@@ -49,6 +65,8 @@
       }, 1000);
     }
 
+
+
     function showMessage(type,res) {
         if(type){
           //TYPE BODY
@@ -56,6 +74,8 @@
           if(!res.return){
             emailBody.value ='';
             emailBody.classList.remove('error');
+            openModalMensaje();
+            setTimeout(() => closeModalMensaje(), 3000);
           }
           setTimeout(() => $postResultBody.innerText = '', 3000);
           
@@ -65,6 +85,8 @@
           if(!res.return){
             emailModal.value ='';
             emailModal.classList.remove('error');
+            openModalMensaje();
+            setTimeout(() =>closeModalMensaje(), 3000);
           }
           setTimeout(() => $postResultModal.innerText = '', 3000);
         }

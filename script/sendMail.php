@@ -4,7 +4,7 @@
 	$type = $_POST['type'];
 
 	$returnValue = false; // NO error
-	$message = 'Correo Enviado';
+	$message = '';
 	$to = 'elizabeth@studio-sub.com';
 	$subject = "MENSAJE CONTACTO";
 
