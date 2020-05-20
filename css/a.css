@@ -15,7 +15,7 @@ header .container button:hover svg{fill:#fff;transform:rotateZ(90deg);}
 
 footer{color:#fff;font-weight: 300;}
 footer .container{display: grid;grid-template-columns: auto auto auto auto;justify-content: center;grid-gap:10px;align-items: center;text-align: center;}
-footer .container #privacidad{color: #fff;text-decoration: none;position: relative;}
+footer .container #privacidad{color: #fff;text-decoration: none;position: relative;font-size: 12px;}
 footer .container #privacidad:after{position:absolute;content:'';width:100%;height: 1px;background: #fff;bottom: 0;left:0;}
 @media only screen and (max-width: 740px){
   footer .container{
@@ -67,7 +67,7 @@ footer .container #privacidad:after{position:absolute;content:'';width:100%;heig
   #body .left form #enviarBody{font-size: 12px;}
 }
 #body .right{display: grid;align-items: center;}
-#body .right svg{width: 100%;}
+#body .right svg{width: 90%;margin:0 auto;}
 
 .modal {position: fixed;z-index: 100;padding-top: 100px;top: -9999px;width: 100%;height: 100%;overflow: auto;background: rgba(0,0,0,0.5);overflow: hidden;}
 .modal.openModal{animation-duration: 1s;animation-name: smoothOpenModal;top:0;}

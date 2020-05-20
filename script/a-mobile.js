@@ -1,6 +1,14 @@
-	const modal = document.getElementById("modal");
+	if( /webOS|iPhone|iPad|iPod/i.test(navigator.userAgent) ) {
+    document.getElementById('whatsappBody').style.display='none';
+    document.getElementById('whatsappModal').style.display='none';
+  }else{
+    document.getElementById('link2whatsappBody').style.display='none';
+    document.getElementById('link2whatsappModal').style.display='none';
+  } 
+  const modal = document.getElementById("modal");
   const modalMensaje = document.getElementById("modalMensaje");
   const span = document.getElementsByClassName("close")[0];
+  const link2whatsapp = document.getElementById('link2whatsapp');
 
   document.getElementById("openModalHeader").onclick = function(e){openModal();};
   document.getElementById("openModalBody").onclick = function(e){openModal();};
@@ -44,16 +52,20 @@
 
   document.getElementById('whatsappBody').addEventListener('click',()=>{
     openModalMensaje();
+    dataLayer.push({'event': 'ClickWhatsapp-BodyA'});
     setTimeout(()=> {
       closeModalMensaje();
-      window.open('https://wa.me/5215572279060?text=Me%20interesa%20cotizar%20mi%20logo%20');
+      link2whatsapp.click();
+      // window.open('https://wa.me/5215572279060?text=Me%20interesa%20cotizar%20mi%20logo%20');
     },3000);
   });
 
   document.getElementById('whatsappModal').addEventListener('click',()=>{
     openModalMensaje();
+    dataLayer.push({'event': 'ClickWhatsapp-ModalA'});
     setTimeout(()=> {
       closeModalMensaje();
-      window.open('https://wa.me/5215572279060?text=Me%20interesa%20cotizar%20mi%20logo%20');
+      link2whatsapp.click();
+      // window.open('https://wa.me/5215572279060?text=Me%20interesa%20cotizar%20mi%20logo%20');
     },3000);
   });

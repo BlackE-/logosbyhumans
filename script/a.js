@@ -11,7 +11,7 @@
     spanClose.onclick = function() {   closeModalMensaje();}
     window.onclick = function(event) {
       if (event.target == modal) {closeModal();}
-      if (event.target == modalMensaje) {closeModal();}
+      if (event.target == modalMensaje) {closeModalMensaje();}
     }   
     openModal = ()=>{
         modal.classList.remove('closeModal');
@@ -75,6 +75,7 @@
             emailBody.value ='';
             emailBody.classList.remove('error');
             openModalMensaje();
+            dataLayer.push({'event': 'FormSubmit-BodyA'});
             setTimeout(() => closeModalMensaje(), 3000);
           }
           setTimeout(() => $postResultBody.innerText = '', 3000);
@@ -86,6 +87,7 @@
             emailModal.value ='';
             emailModal.classList.remove('error');
             openModalMensaje();
+            dataLayer.push({'event': 'FormSubmit-ModalA'});
             setTimeout(() =>closeModalMensaje(), 3000);
           }
           setTimeout(() => $postResultModal.innerText = '', 3000);
@@ -115,8 +117,8 @@
               // console.log(this.response);
                 myObj = JSON.parse(this.response);
                 if(!myObj.return){
-                    stopLoading(type)
-                    showMessage(type,myObj)
+                    stopLoading(type);
+                    showMessage(type,myObj);
                 }
             }
         };
